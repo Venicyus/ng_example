@@ -11,6 +11,8 @@ export class AuthService {
   public UserState: Observable<User | null>;
   private UserSubject: BehaviorSubject<User | null>;
 
+  public teste = 0;
+
   constructor(private http: HttpClient) {
     this.UserSubject = new BehaviorSubject<User>(this.User);
     this.UserState = this.UserSubject.asObservable();
@@ -39,10 +41,11 @@ export class AuthService {
     }
   }
 
-  public login(username: string, password: string, isRemenber?: boolean): Observable<User> {
+  public login(email: string, password: string, isRemenber?: boolean): Observable<User> {
+    this.teste++;
     return this.http
-      .post<User>(`${environment.url_api}/Auth`, {
-        username,
+      .post<User>(`${environment.url_api}/v1/auth`, {
+        email,
         password,
       })
       .pipe(
