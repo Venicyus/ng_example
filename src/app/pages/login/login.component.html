@@ -1,6 +1,11 @@
 <div class="container">
-  <form action="">
-    <input type="email">
-    <input type="password">
-  </form>
+  <mat-tab-group mat-stretch-tabs class="mat-elevation-z2">
+    <mat-tab label="Sign In">
+      <app-signin></app-signin>
+    </mat-tab>
+
+    <mat-tab label="Sign Up">
+      <app-signup></app-signup>
+    </mat-tab>
+  </mat-tab-group>
 </div>

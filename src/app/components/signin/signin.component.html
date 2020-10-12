@@ -1,0 +1,34 @@
+<form class="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [formControl]="emailFormControl" name="v-email" placeholder="joao@email.com" maxlength="40">
+    <mat-icon matSuffix>email</mat-icon>
+
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input matInput [type]="isHidePassword ? 'password' : 'text'" [formControl]="passwordFormControl"
+      placeholder="abcd123" maxlength="24" name="v-password">
+
+    <button mat-icon-button matSuffix (click)="isHidePassword = !isHidePassword" [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="isHidePassword">
+      <mat-icon>{{isHidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+
+    <mat-hint align="end">{{passwordFormControl.value.length}} / 24</mat-hint>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary">Entrar</button>
+</form>
